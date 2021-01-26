@@ -20,7 +20,7 @@ inputs:
     required: false
     default: ''
   emailAddress:
-    description: 'The email address of the person who is creating this deployment. Ideally should be a Raygun User's email address.'
+    description: 'The email address of the person who is creating this deployment. Ideally should be a Raygun User email address.'
     required: false
     default: ''
   comment:
