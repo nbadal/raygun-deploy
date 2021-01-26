@@ -1,0 +1,71 @@
+name: 'Raygun Deployment'
+description: 'Notify Raygun about a deployment'
+branding:
+  icon: 'corner-up-right'
+  color: 'red'
+inputs:
+  # required:
+  apiKey:
+    description: 'The API Key of your Raygun Application, found in Application settings.'
+    required: true
+  version:
+    description: 'The version of your Application that this deployment is releasing. Should be the same as the version string you use in your Raygun error reports.'
+    required: true
+  authToken:
+    description: 'Auth token generated on your Raygun User Settings Page'
+    required: true
+  # optional:
+  ownerName:
+    description: 'The name of the person who is creating this deployment. Ideally should be a Raygun User.'
+    required: false
+    default: ''
+  emailAddress:
+    description: 'The email address of the person who is creating this deployment. Ideally should be a Raygun User's email address.'
+    required: false
+    default: ''
+  comment:
+    description: 'The deployment notes. This will be parsed as Markdown.'
+    required: false
+    default: ''
+  scmIdentifier:
+    description: 'The commit that this deployment was built off. For example, a commit hash.'
+    required: false
+    default: ''
+  scmType:
+    description: 'The source control system you are using.'
+    required: false
+    default: 'GitHub'
+  createdAt:
+    description: 'The date and time this deployment was released in ISO 8601 form.'
+    required: false
+    default: ''
+outputs:
+  deploymentId:
+    description: 'Unique identifier'
+  url:
+    description: 'Full URL to the newly created deployment'
+  applicationUrl:
+    description: 'Full URL to the application in Raygun'
+runs:
+  using: 'docker'
+  image: 'nbadal/raygun-deployment'
+  args:
+    - "--ghAction"
+    - "--apiKey"
+    - ${{ inputs.apiKey }}
+    - "--version"
+    - ${{ inputs.version }}
+    - "--authToken"
+    - ${{ inputs.authToken }}
+    - "--ownerName"
+    - ${{ inputs.ownerName }}
+    - "--emailAddress"
+    - ${{ inputs.emailAddress }}
+    - "--comment"
+    - ${{ inputs.comment }}
+    - "--scmIdentifier"
+    - ${{ inputs.scmIdentifier }}
+    - "--scmType"
+    - ${{ inputs.scmType }}
+    - "--createdAt"
+    - ${{ inputs.createdAt }}

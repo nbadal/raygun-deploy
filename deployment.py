@@ -15,6 +15,8 @@ parser.add_argument('--scmIdentifier')
 parser.add_argument('--scmType')
 parser.add_argument('--createdAt')
 
+parser.add_argument('--ghAction', action='store_true')
+
 # Parse arguments
 args, extra = parser.parse_known_args()
 
@@ -27,11 +29,22 @@ for key, value in list(data.items()):
 url = "https://app.raygun.com/deployments?authToken={}".format(data["authToken"])
 del data["authToken"]
 
+# Check if we should output in the Github Action format
+ghAction = "ghAction" in data
+if ghAction:
+    del data["ghAction"]
+
 # Make request
 response = requests.post(url, json.dumps(data))
-if (response.ok):
+
+if response.ok:
     result = json.loads(response.text)
-    print(result)
+
+    if ghAction:
+        for output,value in result.items():
+            print("::set-output name={}::{}".format(output, value))
+    else:
+        print(result)
     sys.exit(0)
 else:
     error = {}
