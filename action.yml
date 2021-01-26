@@ -48,7 +48,7 @@ outputs:
     description: 'Full URL to the application in Raygun'
 runs:
   using: 'docker'
-  image: 'nbadal/raygun-deployment'
+  image: 'docker://nbadal/raygun-deployment:latest'
   args:
     - "--ghAction"
     - "--apiKey"
