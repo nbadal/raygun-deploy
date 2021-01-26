@@ -3,11 +3,17 @@ import argparse
 import json
 import requests
 
+# Ensure empty strings can't be passed for required arguments
+def non_empty_string(s):
+    if not s:
+        raise ValueError("Must not be empty string")
+    return s
+
 # Define arguments
 parser = argparse.ArgumentParser()
-parser.add_argument('--apiKey', required=True)
-parser.add_argument('--version', required=True)
-parser.add_argument('--authToken', required=True)
+parser.add_argument('--apiKey', required=True, type=non_empty_string)
+parser.add_argument('--version', required=True, type=non_empty_string)
+parser.add_argument('--authToken', required=True, type=non_empty_string)
 parser.add_argument('--ownerName')
 parser.add_argument('--emailAddress')
 parser.add_argument('--comment')
