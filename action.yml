@@ -30,7 +30,7 @@ inputs:
   scmIdentifier:
     description: 'The commit that this deployment was built off. For example, a commit hash.'
     required: false
-    default: ${{ env.GITHUB_SHA }}
+    default: ''
   scmType:
     description: 'The source control system you are using.'
     required: false
