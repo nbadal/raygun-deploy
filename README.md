@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/394812/106365554-30c53800-62eb-11eb-89b3-0a9814ccd5ec.jpg" alt="logo" width="120" />
+
 # Raygun Deployment
 
 Docker Container + GitHub Action for notifying Raygun of app deployments
