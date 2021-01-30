@@ -5,41 +5,41 @@
 Docker Container + GitHub Action for notifying Raygun of app deployments
 
 ## Inputs
-### apiKey
+### `apiKey`
 **Required**: The API Key of your Raygun Application, found in Application settings.
 
-### version
+### `version`
 **Required**: The version of your Application that this deployment is releasing. Should be the same as the version string you use in your Raygun error reports.
 
-### authToken
+### `authToken`
 **Required**: Auth token generated on your Raygun User Settings Page.
 
-### ownerName
+### `ownerName`
 _Optional_: The name of the person who is creating this deployment. Ideally should be a Raygun User. Empty by Default.
 
-### emailAddress
+### `emailAddress`
 _Optional_: The email address of the person who is creating this deployment. Ideally should be a Raygun User email address. Empty by Default.
 
-### comment
+### `comment`
 _Optional_: The deployment notes. This will be parsed as Markdown. Empty by Default.
 
-### scmIdentifier
+### `scmIdentifier`
 _Optional_: The commit that this deployment was built off. For example, a commit hash. Defaults to the action's commit SHA.
 
-### scmType
+### `scmType`
 _Optional_: The source control system you are using. Defaults to `'GitHub'`
 
-### createdAt
+### `createdAt`
 _Optional_: The date and time this deployment was released in ISO 8601 form. Defaults to the current time.
 
 ## Outputs
-### deploymentId
+### `deploymentId`
 Unique identifier
 
-### url
+### `url`
 Full URL to the newly created deployment
 
-### applicationUrl
+### `applicationUrl`
 Full URL to the application in Raygun
 
 ## Example Usage
