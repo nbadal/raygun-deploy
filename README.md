@@ -2,6 +2,8 @@
 
 # Raygun Deployment
 
+![Docker Pulls](https://img.shields.io/docker/pulls/nbadal/raygun-deployment?logo=docker)
+
 Docker Container + GitHub Action for notifying Raygun of app deployments
 
 ## Inputs
